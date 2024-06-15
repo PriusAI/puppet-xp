@@ -1,6 +1,6 @@
 {
-  "name": "wechaty-puppet-xp",
-  "version": "1.13.12",
+  "name": "@prius.ai/wechaty-puppet-xp",
+  "version": "1.15.1",
   "description": "Puppet XP for Wechaty",
   "type": "module",
   "exports": {
@@ -17,7 +17,7 @@
   "scripts": {
     "clean": "shx rm -fr dist/*",
     "dist": "npm-run-all clean build dist:copy dist:commonjs",
-    "build:agent": "tsc src/init-agent-script.ts --outFile src/init-agent-script.js",
+    "build:agent": "tsc --skipLibCheck src/init-agent-script.ts --outFile src/init-agent-script.js",
     "frida": "tsc tests/frida.ts --outFile tests/frida.js && frida -n WeChat.exe -l tests/frida.js --debug",
     "build": "tsc && tsc -p tsconfig.cjs.json",
     "dist:commonjs": "jq -n \"{ type: \\\"commonjs\\\" }\" > dist/cjs/package.json",
@@ -72,11 +72,16 @@
     "@types/node": "^20.10.5",
     "@types/qrcode-terminal": "^0.12.2",
     "@types/xml2js": "^0.4.9",
+    "file-box": "^1.4.15",
     "frida-compile": "^16.4.1",
     "husky": "^7.0.4",
+    "npm-run-all": "^4.1.5",
     "qrcode-terminal": "^0.12.0",
+    "shx": "^0.3.4",
     "tstest": "^1.0.1",
+    "type-fest": "^4.20.0",
     "typed-emitter": "^1.4.0",
+    "typescript": "^4.5.4",
     "wechaty": "^1.20.2"
   },
   "peerDependencies": {

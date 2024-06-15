@@ -34,7 +34,7 @@ import {
 import { codeRoot } from './cjs.js'
 // import { WeChatVersion } from './agents/winapi-sidecar.js'
 
-type WeChatVersion = {
+export type WeChatVersion = {
   wechatVersion: string,
 }
 
@@ -46,7 +46,7 @@ class XpSidecar {
     v39223:'3.9.2.23',
   }
 
-  static currentVersion = '3.9.2.23'
+  static currentVersion = '3.9.10.27'
   static scriptPath =  path.join(
     codeRoot,
     'src',

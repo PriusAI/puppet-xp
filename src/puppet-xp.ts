@@ -44,7 +44,7 @@ import {
   VERSION,
 } from './config.js'
 
-import { WeChatSidecar } from './wechat-sidecar.js'
+import { XpSidecar, WeChatSidecar, WeChatVersion } from './wechat-sidecar.js'
 import { ImageDecrypt } from './pure-functions/image-decrypt.js'
 import { XmlDecrypt } from './pure-functions/xml-msgpayload.js'
 // import type { Contact } from 'wechaty'
@@ -57,7 +57,7 @@ async function wait (ms:number) {
 const userInfo = os.userInfo()
 const rootPath = `${userInfo.homedir}\\Documents\\WeChat Files\\`
 
-export type PuppetXpOptions = PUPPET.PuppetOptions
+export type PuppetXpOptions = PUPPET.PuppetOptions & {sidecar?: WeChatVersion}
 
 class PuppetXp extends PUPPET.Puppet {
 
@@ -108,6 +108,7 @@ class PuppetXp extends PUPPET.Puppet {
       log.warn('PuppetXp', 'onStart() this.#sidecar exists? will be replaced by a new one.')
     }
 
+    new XpSidecar(this.options.sidecar)
     this.#sidecar = new WeChatSidecar()
 
     await attach(this.sidecar)
